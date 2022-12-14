@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,200&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #18191A;
+}
+
+::selection {
+    color: #fff;
+    background-color: #23243A;
+}
+
+.start_btn,
+.info_box,
+.quiz_box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+                0 6px 20px 0 rgba(0, 0, 0, 0.2) ;
+    z-index: 1; /* 이게 뭘까 */
+}
+
+.start_btn button {
+    font-size: 25px;
+    font-weight: 500;
+    color: #181818;
+    padding: 15px 30px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.info_box {
+    width: 540px;
+    background-color: #242526;
+    color: #fff;
+    border-radius: 5px;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+    opacity: 0; /* 이거 해야 info_box가 사라지면서 버튼이 드러남 */
+}
+
+.info_box .info-title {
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid lightgrey;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.info_box .info-list {
+    padding: 15px 30px;
+}
+
+.info_box .info-list .info {
+    margin: 5px 0;
+    font-size: 17px;
+}
+
+.info_box .info-list .info span {
+    font-weight: 600;
+    color: #007bff;
+}
+
+.info_box .buttons {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 30px;
+    border-top: 1px solid lightgrey;
+}
+
+.info_box .buttons button {
+    margin: 0 5px;
+    height: 40px;
+    width: 100px;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.buttons button.quit {
+    color: #fff;
+    background: none;
+}
+
+.buttons button.quit:hover {
+    background: #3a3b3c;
+}
+
+.buttons button.restart {
+    color: #fff;
+    background: #3a3b3c;
+}
+
+.quiz_box {
+    width: 550px;
+    background: #242426;
+    color: #fff;
+    border-radius: 5px;
+    transform: translate(-50%, -50%) scale(0.9);
+    transition: all 0.3s ease;
+}
+
+.quiz_box header {
+    position: relative;
+    height: 70px;
+    padding: 0 30px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.1);
+}
+
+.quiz_box header .title {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.quiz_box header .timer {
+    color: #004085;
+    background: #cce5ff;
+    border: 1px solid #b8daff;
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 45px;
+    width: 145px;
+}
+
+.quiz_box header .timer .time_left_txt {
+    user-select: none;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.quiz_box header .timer .time_sec {
+    background-color: #343a40;
+    font-size: 18px;
+    font-weight: 500;
+    height: 30px;
+    width: 45px;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 30px;
+    user-select: none;
+}
+
+.quiz_box header .time_line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /* width: 50%; */
+    height: 3px;
+    background: #007bff;
+}
+
+
