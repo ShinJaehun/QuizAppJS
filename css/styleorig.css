@@ -1,19 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,200&display=swap');
-
-* {
+/* importing google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
 
-body {
-    background-color: #18191A;
+body{
+    background: #18191A;
 }
 
-::selection {
+::selection{
     color: #fff;
-    background-color: #23243A;
+    background: #007bff;
 }
 
 .start_btn,
@@ -30,7 +30,8 @@ body {
 }
 
 .info_box.activeInfo,
-.quiz_box.activeQuiz {
+.quiz_box.activeQuiz,
+.result_box.activeResult{
     opacity: 1;
     z-index: 5;
     pointer-events: auto;
@@ -38,9 +39,6 @@ body {
 }
 
 .start_btn button{
-    /* 이거 cursor: pointer가 적용되지 않아서 계속 해멨는데
-    걍 orig 소스코드 복사해서 확인하니 정상 동작함...
-    아직까지도 왜 이게 되는지 이유를 모르겠음. */
     font-size: 25px;
     font-weight: 500;
     color: #181818;
@@ -63,34 +61,32 @@ body {
     transition: all 0.3s ease;
 }
 
-.info_box .info-title {
-    width: 100%;
+.info_box .info-title{
     height: 60px;
+    width: 100%;
     border-bottom: 1px solid lightgrey;
     display: flex;
     align-items: center;
     padding: 0 30px;
     border-radius: 5px 5px 0 0;
-
     font-size: 20px;
     font-weight: 600;
 }
 
-.info_box .info-list {
+.info_box .info-list{
     padding: 15px 30px;
 }
 
-.info_box .info-list .info {
+.info_box .info-list .info{
     margin: 5px 0;
     font-size: 17px;
 }
 
-.info_box .info-list .info span {
+.info_box .info-list .info span{
     font-weight: 600;
     color: #007bff;
 }
-
-.info_box .buttons {
+.info_box .buttons{
     height: 60px;
     display: flex;
     align-items: center;
@@ -99,184 +95,167 @@ body {
     border-top: 1px solid lightgrey;
 }
 
-.info_box .buttons button {
+.info_box .buttons button{
     margin: 0 5px;
     height: 40px;
     width: 100px;
     font-size: 16px;
     font-weight: 500;
+    cursor: pointer;
     border: none;
     outline: none;
     border-radius: 5px;
     transition: all 0.3s ease;
-    cursor: pointer;
 }
 
-.buttons button.quit {
-    color: #fff;
-    background: none;
-}
-
-.buttons button.quit:hover {
-    background: #3a3b3c;
-}
-
-.buttons button.restart {
-    color: #fff;
-    background: #3a3b3c;
-}
-
-.quiz_box {
+.quiz_box{
     width: 550px;
-    background: #242426;
+    background: #242526;
     color: #fff;
     border-radius: 5px;
+    transform: translate(-50%, -50%) scale(0.9);
     opacity: 0;
     pointer-events: none;
-    transform: translate(-50%, -50%) scale(0.9);
     transition: all 0.3s ease;
 }
 
-.quiz_box header {
+.quiz_box header{
     position: relative;
+    z-index: 2;
     height: 70px;
     padding: 0 30px;
-    border-radius: 5px;
+    border-radius: 5px 5px 0 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 3px 5px 1px rgba(0,0,0,0.1);
 }
 
-.quiz_box header .title {
+.quiz_box header .title{
     font-size: 20px;
     font-weight: 600;
 }
 
-.quiz_box header .timer {
+.quiz_box header .timer{
     color: #004085;
     background: #cce5ff;
     border: 1px solid #b8daff;
+    height: 45px;
     padding: 0 8px;
+    border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 45px;
     width: 145px;
 }
 
-.quiz_box header .timer .time_left_txt {
-    user-select: none;
-    font-size: 17px;
+.quiz_box header .timer .time_left_txt{
     font-weight: 400;
+    font-size: 17px;
+    user-select: none;
 }
 
-.quiz_box header .timer .time_sec {
-    background-color: #343a40;
+.quiz_box header .timer .timer_sec{
     font-size: 18px;
     font-weight: 500;
     height: 30px;
     width: 45px;
     color: #fff;
     border-radius: 5px;
-    text-align: center;
     line-height: 30px;
+    text-align: center;
+    background: #343a40;
+    border: 1px solid #343a40;
     user-select: none;
 }
 
-.quiz_box header .time_line {
+.quiz_box header .time_line{
     position: absolute;
-    bottom: 0;
-    left: 0;
-    /* width: 50%; */
+    bottom: 0px;
+    left: 0px;
     height: 3px;
     background: #007bff;
 }
 
-section {
+section{
     padding: 25px 30px 20px 30px;
 }
 
-section .que_text {
+section .que_text{
     font-size: 25px;
     font-weight: 600;
 }
 
-
-section .option_list {
-    padding: 20px 0;
-    display: block;
+section .option_list{
+    padding: 20px 0px;
+    display: block;   
 }
 
-section .option_list .option {
+section .option_list .option{
     background: aliceblue;
-    border: 1px solid #18191A;
-    border-radius: 5px;
-    padding: 8px 15px;
-    font-size: 17px;
-    color: #010101;
-    margin-bottom: 15px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+        border: 1px solid #18191A;
+        border-radius: 5px;
+        padding: 8px 15px;
+        font-size: 17px;
+        margin-bottom: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #010101;
 }
 
-section .option_list .option:last-child {
+section .option_list .option:last-child{
     margin-bottom: 0px;
 }
 
-section .option_list .option:hover {
+section .option_list .option:hover{
     color: #004085;
     background: #cce5ff;
     border: 1px solid #b8daff;
 }
 
-section .option_list .option .icon {
-    width: 26px;
+section .option_list .option.correct{
+    color: #155724;
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+}
+
+section .option_list .option.incorrect{
+    color: #721c24;
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+
+section .option_list .option.disabled{
+    pointer-events: none;
+}
+
+section .option_list .option .icon{
     height: 26px;
-    /* border: 2px solid red; */
+    width: 26px;
     border: 2px solid transparent;
     border-radius: 50%;
     text-align: center;
     font-size: 13px;
     pointer-events: none;
     transition: all 0.3s ease;
-    line-height: 26px;
-
+    line-height: 24px;
 }
-
-/* section .option_list .option .icon .tick  이렇게 한 칸 띄어 쓰면 적용 안됨 */
-section .option_list .option .icon.tick {
+.option_list .option .icon.tick{
     color: #23903c;
-    background-color: #d4edda;
     border-color: #23903c;
-}
-
-section .option_list .option .icon.cross {
-    color: #a42834;
-    background-color: #f8d7da;
-    border-color: #a42834;;
-}
-
-section .option_list .option.correct {
-    color: #155724;
     background: #d4edda;
-    border: 1px solid #c3e6cb;
 }
 
-section .option_list .option.incorrect {
-    color: #721c24;
+.option_list .option .icon.cross{
+    color: #a42834;
     background: #f8d7da;
-    border: 1px solid #f5c6cb;
+    border-color: #a42834;
 }
 
-section .option_list .option.disabled {
-    pointer-events: none;
-}
-
-footer {
+footer{
     height: 60px;
     padding: 0 30px;
     display: flex;
@@ -285,7 +264,7 @@ footer {
     border-top: 1px solid lightgrey;
 }
 
-footer .total_que span {
+footer .total_que span{
     display: flex;
     user-select: none;
 }
@@ -295,7 +274,11 @@ footer .total_que span p{
     padding: 0 5px;
 }
 
-footer button {
+footer .total_que span p:first-child{
+    padding-left: 0px;
+}
+
+footer button{
     height: 40px;
     padding: 0 13px;
     font-size: 18px;
@@ -304,62 +287,67 @@ footer button {
     border: none;
     outline: none;
     color: #fff;
-    background: #3a3b3c;
     border-radius: 5px;
+    background: #3a3b3c;
     border: 1px solid #242526;
     line-height: 10px;
-    /* pointer-events: none; */
+    opacity: 0;
+    pointer-events: none;
     transform: scale(0.95);
     transition: all 0.3s ease;
-    opacity: 0;
 }
 
-footer button.show {
+footer button.show{
     opacity: 1;
     pointer-events: auto;
     transform: scale(1);
 }
 
-.result_box {
-    background-color: #242526;
+.result_box{
+    background: #242526;
     border-radius: 5px;
     display: flex;
     padding: 25px 30px;
-    flex-direction: column;
-    align-items: center;
     width: 450px;
+    align-items: center;
+    flex-direction: column;
     justify-content: center;
     transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0;
     pointer-events: none;
     transition: all 0.3s ease;
     color: #fff;
-    opacity: 0;
 }
 
-.result_box .icon {
+.result_box .icon{
     font-size: 100px;
     color: #007bff;
     margin-bottom: 10px;
 }
 
-.result_box .complete_text {
+.result_box .complete_text{
     font-size: 20px;
     font-weight: 500;
 }
 
-.result_box .score_text span {
+.result_box .score_text span{
     display: flex;
     margin: 10px 0;
     font-size: 18px;
     font-weight: 500;
 }
 
-.result_box .buttons {
+.result_box .score_text span p{
+    padding: 0 4px;
+    font-weight: 600;
+}
+
+.result_box .buttons{
     display: flex;
     margin: 20px 0;
 }
 
-.result_box .buttons button {
+.result_box .buttons button{
     margin: 0 10px;
     height: 45px;
     padding: 0 20px;
@@ -370,4 +358,34 @@ footer button.show {
     outline: none;
     border-radius: 5px;
     transition: all 0.3s ease;
+}
+
+.buttons button.restart{
+    color: #fff;
+    background: #3A3B3C;
+}
+
+.buttons button.restart:hover{
+    background: #3A3B3C;
+}
+
+.buttons button.quit{
+    color: #fff;
+    background: none;
+}
+
+.buttons button.quit:hover{
+    color: #fff;
+    background: #3A3B3C;
+}
+
+#my-canvas{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    opacity: 0;
+}
+
+#my-canvas.show-canvas{
+    opacity: 1;
 }
