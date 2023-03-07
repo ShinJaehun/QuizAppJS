@@ -30,7 +30,8 @@ body {
 }
 
 .info_box.activeInfo,
-.quiz_box.activeQuiz {
+.quiz_box.activeQuiz,
+.result_box.activeResult {
     opacity: 1;
     z-index: 5;
     pointer-events: auto;
@@ -370,4 +371,15 @@ footer button.show {
     outline: none;
     border-radius: 5px;
     transition: all 0.3s ease;
+}
+
+#my-canvas {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    opacity: 0;
+}
+
+#my-canvas.show_canvas {
+    opacity: 1;
 }
